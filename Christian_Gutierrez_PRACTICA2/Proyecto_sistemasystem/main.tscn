@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1hkrib2i0n8y"]
+
+[ext_resource type="Script" uid="uid://23u31hvtwgfn" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cs2n54q1edo38" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://befkbg500ucqy" path="res://planeta.tscn" id="3_1bvp3"]
+
+[node name="EscenaPrincipal" type="Node2D"]
+script = ExtResource("1_h2yge")
+
+[node name="sol" type="Sprite2D" parent="."]
+position = Vector2(290, 183)
+scale = Vector2(3.36719, 2.45313)
+texture = ExtResource("1_ig7tw")
+
+[node name="TimerRotacion" type="Timer" parent="sol"]
+wait_time = 0.05
+autostart = true
+
+[node name="Orbitas" type="Node2D" parent="."]
+
+[node name="planeta" parent="Orbitas" instance=ExtResource("3_1bvp3")]
+
+[node name="planeta2" parent="Orbitas" instance=ExtResource("3_1bvp3")]
+
+[node name="planeta3" parent="Orbitas" instance=ExtResource("3_1bvp3")]
+
+[connection signal="timeout" from="sol/TimerRotacion" to="." method="_on_timer_rotacion_timeout"]
